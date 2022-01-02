@@ -51,7 +51,6 @@ abstract class Command extends BaseCommand
         $this->setApiUri();
         $this->setApiToken();
         $this->setHttpClient();
-        $this->setProjectId();
     }
 
     /**
@@ -100,7 +99,7 @@ abstract class Command extends BaseCommand
      *
      * @return void
      */
-    private function setProjectId()
+    protected function setProjectId()
     {
         $response = $this->http_client->get('projects', [
             'search' => $this->getProjectName(),
@@ -112,7 +111,6 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        /** @var \stdClass */
         $project = $response->collect()->first();
 
         $this->project_id = $project['id'];

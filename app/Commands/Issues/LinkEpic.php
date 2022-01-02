@@ -29,6 +29,8 @@ class LinkEpic extends Command
      */
     public function handle()
     {
+        $this->setProjectId();
+
         /** @var string */
         $issue_id = $this->argument('issue');
 
