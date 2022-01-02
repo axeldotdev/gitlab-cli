@@ -15,5 +15,3 @@ All notable changes to `gitlab-cli` will be documented in this file.
 - `App\Commands\Issues\ReplaceLabels` command
 - `App\Commands\Issues\UnlinkEpic` command
 - `App\Commands\Issues\UnlinkMilestone` command
-- `App\Commands\RegisterToken` command
-- `App\Commands\RegisterHost` command

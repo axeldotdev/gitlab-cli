@@ -19,6 +19,13 @@ class RegisterHost extends Command
     protected $description = 'Register your self-hosted Gitlab instance';
 
     /**
+     * Indicates whether the command should be shown in the Artisan command list.
+     *
+     * @var bool
+     */
+    protected $hidden = true;
+
+    /**
      * Execute the console command.
      *
      * @return int

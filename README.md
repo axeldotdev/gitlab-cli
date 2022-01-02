@@ -29,9 +29,16 @@ You need to generate an access token on Gitlab to use the API.
 
 To create a new access token, go to your [access tokens section on GitLab](https://gitlab.com/-/profile/personal_access_tokens) (or the equivalent URL on your private instance) and create a new token. See also [the GitLab access token documentation](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token) for more informations.
 
+When you have your personal access token, add it to your composer global `auth.json`. See also [The Composer authentification documentation](https://getcomposer.org/doc/articles/authentication-for-private-packages.md#gitlab-token) for more informations.
+
+**Currently this package only works with Gitlab cloud. If you have a self-hosted Gitlab instance, you need to wait next release, I'm sorry.**
+
+**WORK IN PROGRESS**
+
 Then you can register it with the command: `gitlab-cli register:token {personal_token}`
 
 If you have a self-hosted Gitlab, you can register it with the command: `gitlab-cli register:host {host_uri}`
+
 
 ### Issues
 

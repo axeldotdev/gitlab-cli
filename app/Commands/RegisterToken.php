@@ -19,6 +19,13 @@ class RegisterToken extends Command
     protected $description = 'Register your personal access token';
 
     /**
+     * Indicates whether the command should be shown in the Artisan command list.
+     *
+     * @var bool
+     */
+    protected $hidden = true;
+
+    /**
      * Execute the console command.
      *
      * @return int

@@ -35,7 +35,7 @@ abstract class Command extends BaseCommand
     /**
      * The HTTP client.
      *
-     * @var PendingRequest.
+     * @var PendingRequest
      */
     protected $http_client;
 
@@ -61,10 +61,6 @@ abstract class Command extends BaseCommand
      */
     private function setApiUri()
     {
-        if (env('GITLAB_API_URI')) {
-            $this->api_uri = env('GITLAB_API_URI') . '/api/v4/';
-        }
-
         $this->api_uri = 'https://gitlab.com/api/v4/';
     }
 
@@ -75,7 +71,17 @@ abstract class Command extends BaseCommand
      */
     private function setApiToken()
     {
-        $this->api_token = '' . env('GITLAB_API_TOKEN') . '';
+        $process = new Process([
+            'composer', 'config', '--global', 'gitlab-token.gitlab.com',
+        ]);
+
+        $process->run();
+
+        if (! $process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        $this->api_token = $process->getOutput();
     }
 
     /**
@@ -109,7 +115,7 @@ abstract class Command extends BaseCommand
         /** @var \stdClass */
         $project = $response->collect()->first();
 
-        $this->project_id = $project->id;
+        $this->project_id = $project['id'];
     }
 
     /**
